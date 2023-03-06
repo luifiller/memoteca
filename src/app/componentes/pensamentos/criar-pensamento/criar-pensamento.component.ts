@@ -11,7 +11,7 @@ export class CriarPensamentoComponent {
     id: '1',
     conteudo: 'Aprendendo Angular na Alura',
     autoria: 'Luiz Nison',
-    modelo: ''
+    modelo: 'modelo1'
   }
 
   criarPensamento(){

@@ -7,18 +7,6 @@
       "modelo": "modelo1"
     },
     {
-      "id": 2,
-      "conteudo": "Estudando Angular",
-      "autoria": "Luiz Nison",
-      "modelo": "modelo2"
-    },
-    {
-      "id": 3,
-      "conteudo": "Hoje tenho prova de linguagem de programação com Java",
-      "autoria": "Luiz Nison",
-      "modelo": "modelo3"
-    },
-    {
       "conteudo": "Eu preciso de café. Urgente!",
       "autoria": "Luiz Nison",
       "modelo": "modelo3",
@@ -29,6 +17,12 @@
       "autoria": "Luiz Nison",
       "modelo": "modelo1",
       "id": 5
+    },
+    {
+      "conteudo": "Café + Música = ↑ produtividade",
+      "autoria": "Luiz Nison",
+      "modelo": "modelo2",
+      "id": 6
     }
   ]
 }

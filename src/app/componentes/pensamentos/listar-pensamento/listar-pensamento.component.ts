@@ -12,7 +12,10 @@ export class ListarPensamentoComponent {
 
   constructor(private service: PensamentoService) {}
 // toda lógica a ser executada quando um componente for carregada é inserida no ngOnInit
+// utiliza-se "subscribe" para indicar que precisa notificar quando há mudanças no array
   ngOnInit(): void {
-    this.service.listar()
+    this.service.listar().subscribe((listaPensamentos) => {
+      this.listaPensamentos = listaPensamentos;
+    });
   }
 }

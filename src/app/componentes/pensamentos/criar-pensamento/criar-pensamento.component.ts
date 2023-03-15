@@ -1,22 +1,22 @@
 import { PensamentoService } from './../pensamento.service';
-import { Pensamento } from './../pensamento/pensamento';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { minusculoValidator } from './minusculoValidators';
 
 @Component({
   selector: 'app-criar-pensamento',
   templateUrl: './criar-pensamento.component.html',
   styleUrls: ['./criar-pensamento.component.css'],
 })
-export class CriarPensamentoComponent {
+export class CriarPensamentoComponent implements OnInit {
+  formulario!: FormGroup;
+
   constructor(
     private service: PensamentoService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {}
-
-  formulario!: FormGroup;
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
@@ -29,7 +29,11 @@ export class CriarPensamentoComponent {
       ],
       autoria: [
         '',
-        Validators.compose([Validators.required, Validators.minLength(3)]),
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(3),
+          minusculoValidator,
+        ]),
       ],
       modelo: ['modelo1'],
     });

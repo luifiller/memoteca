@@ -46,6 +46,13 @@
       Autoria precisa ter no mínimo 3 caracteres.
     </div>
 
+    <div
+      class="mensagem__erro"
+      *ngIf="formulario.get('autoria')?.errors?.['minusculo'] && formulario.get('autoria')?.touched"
+    >
+      Esse cmapo aceita apenas letras minúsculas.
+    </div>
+
     <label for="modelo">Selecione o modelo do card:</label>
 
     <!-- Modelo 1 -->

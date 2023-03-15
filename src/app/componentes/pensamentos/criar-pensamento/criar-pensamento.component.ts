@@ -29,10 +29,7 @@ export class CriarPensamentoComponent {
       ],
       autoria: [
         '',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(3)
-        ]),
+        Validators.compose([Validators.required, Validators.minLength(3)]),
       ],
       modelo: ['modelo1'],
     });
@@ -50,5 +47,13 @@ export class CriarPensamentoComponent {
 
   cancelarPensamento() {
     this.router.navigate(['/listarPensamento']);
+  }
+
+  habilitarBotao(): string {
+    if (this.formulario.valid) {
+      return 'botao';
+    } else {
+      return 'botao__desabilitado';
+    }
   }
 }

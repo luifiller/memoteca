@@ -11,7 +11,7 @@ export class PensamentoService {
 
   constructor(private http: HttpClient) {}
 
-  listar(pagina: number): Observable<Pensamento[]> {
+  listar(pagina: number, filtro: string): Observable<Pensamento[]> {
     const itensPorPagina = 6;
     // Os comentários abaixo são referências da Paginação da API -> https://github.com/typicode/json-server#paginate
     // GET /posts?_page=7
@@ -19,8 +19,13 @@ export class PensamentoService {
     // Não é considerada uma boa prática a interpolação de variáveis na URL como a da linha abaixo; para isso, utiliza-se uma classe do Angular: 'HttpParams'
     // return this.http.get<Pensamento[]>(this.API + `?_page=${pagina}&_limit=${itensPorPagina}`);
     let params = new HttpParams()
-      .set("_page", pagina)
-      .set("_limit", itensPorPagina);
+      .set('_page', pagina)
+      .set('_limit', itensPorPagina);
+
+    if (filtro.trim().length > 2) {
+      params = params.set('q', filtro);
+    }
+
     return this.http.get<Pensamento[]>(this.API, { params });
   }
 

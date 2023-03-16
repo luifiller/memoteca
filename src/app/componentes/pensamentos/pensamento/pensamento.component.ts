@@ -12,7 +12,8 @@ export class PensamentoComponent {
     id: 0,
     conteudo: 'Eu estou amando aprender Angular! :)',
     autoria: 'Luiz Nison',
-    modelo: 'modelo3'
+    modelo: 'modelo3',
+    favorito: false
   }
 
   larguraPensamento() : string {
@@ -20,7 +21,13 @@ export class PensamentoComponent {
       return 'pensamento-g'
     }
     return 'pensamento-p'
-
   }
 
+  mudarIconeFavorito(): string {
+    if(this.pensamento.favorito == false){
+      return "inativo";
+    } else {
+      return "ativo";
+    }
+  }
 }

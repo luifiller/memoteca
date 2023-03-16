@@ -1,8 +1,14 @@
 <div class="pensamento {{ pensamento.modelo }} ff-roboto-mono" [ngClass]="larguraPensamento()">
   <img src="../../../../assets/{{ pensamento.modelo }}.png" alt="Aspas coloridas">
+
   <p class="conteudo"> {{ pensamento.conteudo }} </p>
-  <p class="conteudo"> <b>{{ pensamento.autoria }} </b></p>
+  <p class="autoria"> <b>{{ pensamento.autoria }} </b></p>
+
   <div class="acoes">
+    <button class="botao-favorito">
+      <img src="../../../../assets/icone-favorito-{{ mudarIconeFavorito() }}.png" alt="Icone de coração azul favorito {{ mudarIconeFavorito() }}">
+    </button>
+
     <button class="botao-editar" routerLink="/pensamentos/editarPensamento/{{ pensamento.id }}">
       <img src="../../../../assets/icone-editar.png" alt="Icone de editar">
     </button>

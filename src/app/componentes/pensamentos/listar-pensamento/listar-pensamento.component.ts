@@ -1,7 +1,7 @@
+import { Router } from '@angular/router';
 import { PensamentoService } from './../pensamento.service';
 import { Component, OnInit } from '@angular/core';
 import { Pensamento } from '../pensamento/pensamento';
-import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-listar-pensamento',
@@ -15,8 +15,9 @@ export class ListarPensamentoComponent implements OnInit {
   filtro: string = '';
   favoritos: boolean = false;
   listaFavoritos: Pensamento[] = [];
+  titulo: string = 'Meu mural';
 
-  constructor(private service: PensamentoService) {}
+  constructor(private service: PensamentoService, private router: Router) {}
   // toda lógica a ser executada quando um componente for carregada é inserida no ngOnInit
   // utiliza-se "subscribe" para indicar que precisa notificar quando há mudanças no array
   ngOnInit(): void {
@@ -43,7 +44,19 @@ export class ListarPensamentoComponent implements OnInit {
     })
   }
 
+  recarregarComponente() {
+    // Não é recomendado utilizar reload para recarregar uma SPA inteira
+    // location.reload();
+    this.favoritos = false;
+    this.paginaAtual = 1;
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([this.router.url])
+  }
+
   listarFavoritos() {
+    this.titulo = 'Meus favoritos';
     this.favoritos = true;
     this.haMaisPensamentos = true;
     this.paginaAtual = 1;

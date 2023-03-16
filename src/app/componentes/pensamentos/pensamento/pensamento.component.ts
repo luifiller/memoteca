@@ -1,3 +1,4 @@
+import { PensamentoService } from './../pensamento.service';
 import { Component, Input } from '@angular/core';
 import { Pensamento } from './pensamento';
 
@@ -16,6 +17,8 @@ export class PensamentoComponent {
     favorito: false
   }
 
+  constructor(private service: PensamentoService) {}
+
   larguraPensamento() : string {
     if(this.pensamento.conteudo.length >= 256) {
       return 'pensamento-g'
@@ -29,5 +32,11 @@ export class PensamentoComponent {
     } else {
       return "ativo";
     }
+  }
+
+  atualizarFavoritos() {
+    this.service.mudarFavorito(this.pensamento).subscribe();
+    console.log(this.pensamento.favorito);
+
   }
 }

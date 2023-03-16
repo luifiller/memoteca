@@ -5,7 +5,7 @@
   <p class="autoria"> <b>{{ pensamento.autoria }} </b></p>
 
   <div class="acoes">
-    <button class="botao-favorito">
+    <button class="botao-favorito" (click)="atualizarFavoritos()">
       <img src="../../../../assets/icone-favorito-{{ mudarIconeFavorito() }}.png" alt="Icone de coração azul favorito {{ mudarIconeFavorito() }}">
     </button>
 
